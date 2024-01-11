@@ -1,13 +1,14 @@
-import React from "react";
+import React, { SyntheticEvent } from "react";
 import Card from "../Card/Card";
 import { CompanySearch } from "../../company";
 import { v4 as uuidv4 } from "uuid";
 
 interface Props {
     searchResults: CompanySearch[];
+    onPortfolioCreate: (e: SyntheticEvent) => void;
 }
 
-const CardList: React.FC<Props> = ({ searchResults }: Props): JSX.Element => {
+const CardList: React.FC<Props> = ({ searchResults, onPortfolioCreate }: Props): JSX.Element => {
     return (
         <>
             {
@@ -17,6 +18,7 @@ const CardList: React.FC<Props> = ({ searchResults }: Props): JSX.Element => {
                             id={result.symbol}
                             key={uuidv4()}
                             searchResult={result}
+                            onPortfolioCreate={onPortfolioCreate}
                         />
                     })
                 ) : (
