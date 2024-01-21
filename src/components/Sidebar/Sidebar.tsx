@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+import { FaHome } from 'react-icons/fa'
 
 interface Props { }
 
@@ -20,11 +22,21 @@ const Sidebar = (props: Props) => {
 
                         <div className="md:flex-col md:min-w-full flex flex-col list-none">
 
-                            <h6 className="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
+                            <Link
+                                to="company-profile"
+                                className='flex md:min-w-full text-blueGray-500 text-medium uppercase font-bold block pt--1 pb-4 no-underline'
+                            >
+                                <FaHome className='mt-1' />
+                                <h6 className='ml-3'>Company Profile</h6>
+                            </Link>
 
-                                Home
-
-                            </h6>
+                            <Link
+                                to="income-statement"
+                                className='flex md:min-w-full text-blueGray-500 text-medium uppercase font-bold block pt--1 pb-4 no-underline'
+                            >
+                                <FaHome className='mt-1' />
+                                <h6 className='ml-3'>Income Statement</h6>
+                            </Link>
 
                         </div>
 
