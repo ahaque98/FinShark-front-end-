@@ -1,5 +1,10 @@
-import axios from "axios"
-import { CompanyProfile, CompanySearch } from "./company"
+import axios from "axios";
+import {
+    CompanyKeyMetrics,
+    CompanyKeyRatios,
+    CompanyProfile,
+    CompanySearch,
+} from "./company";
 
 export interface SearchResponse {
     data: CompanySearch[];
@@ -13,14 +18,14 @@ export const searchCompanies = async (query: string) => {
         return data;
     } catch (error) {
         if (axios.isAxiosError(error)) {
-            console.log("Error Message", error.message);
+            console.log("error message: ", error.message);
             return error.message;
         } else {
-            console.log("unexpected error", error);
-            return "An unexpected error has occurred!";
+            console.log("unexpected error: ", error);
+            return "An expected error has occured.";
         }
     }
-}
+};
 
 export const getCompanyProfile = async (query: string) => {
     try {
@@ -28,8 +33,18 @@ export const getCompanyProfile = async (query: string) => {
             `https://financialmodelingprep.com/api/v3/profile/${query}?apikey=${process.env.REACT_APP_API_KEY}`
         );
         return data;
+    } catch (error: any) {
+        console.log("error message: ", error.message);
     }
-    catch (error: any) {
-        console.log("Error message from api:", error.message);
+};
+
+export const getKeyMetrics = async (query: string) => {
+    try {
+        const data = await axios.get<CompanyKeyMetrics[]>(
+            `https://financialmodelingprep.com/api/v3/key-metrics-ttm/AAPL?limit=40&apikey=${process.env.REACT_APP_API_KEY}`
+        );
+        return data;
+    } catch (error: any) {
+        console.log("error message: ", error.message);
     }
-}
+};
