@@ -32,9 +32,7 @@ const CompanyPage = (props: Props) => {
                             <Tile
                                 title="Company Name"
                                 subTitle={company.companyName}
-                            >
-
-                            </Tile>
+                            ></Tile>
                         </CompanyDashboard>
 
                     </div>
