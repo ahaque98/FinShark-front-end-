@@ -1,4 +1,3 @@
-
 type Props = {
     config: any;
     data: any;
