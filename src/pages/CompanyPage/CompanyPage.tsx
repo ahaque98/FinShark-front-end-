@@ -6,6 +6,7 @@ import CompanyDashboard from "../../components/CompanyDashboard/CompanyDashboard
 import Sidebar from "../../components/Sidebar/Sidebar";
 import Tile from "../../components/Tile/Tile";
 import Spinner from "../../components/Spinner/Spinner";
+import CompFinder from "../../components/CompFinder/CompFinder";
 
 interface Props { }
 
@@ -30,6 +31,10 @@ const CompanyPage = (props: Props) => {
                     <CompanyDashboard ticker={ticker!}>
                         <Tile title="Company Name" subTitle={company.companyName} />
                         <Tile title="Price" subTitle={company.price.toString()} />
+                        <CompFinder ticker={company.symbol} />
+                        <p className="bg-white shadow rounded text-medium font-medium text-gray-900 p-3 mt-1 m-4">
+                            {company.description}
+                        </p>
                         <Tile title="Sector" subTitle={company.sector} />
                         <Tile title="Market Cap" subTitle={company.mktCap.toString()} />
                     </CompanyDashboard>
